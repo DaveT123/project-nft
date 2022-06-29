@@ -5,6 +5,8 @@ class NftController {
         this.allNfts = [];
         this.tempNfts = [];
         this.pageNfts = [];
+        this.pageClicked = "page-1";
+        this.haveEventListener = false;
 
         this.filters = [
             "all",
@@ -27,8 +29,8 @@ class NftController {
         this.domainURL_Dev = "http://localhost:8080/";
         this.domainURL_Prod ="https://webprojectttr.herokuapp.com/";
 
-        this.addItemAPI = this.domainURL_Prod + "nft/add";
-        this.allItemAPI = this.domainURL_Prod + "nft/all";
+        this.addItemAPI = this.domainURL_Dev + "nft/add";
+        this.allItemAPI = this.domainURL_Dev + "nft/all";
 
     }
 
@@ -158,7 +160,7 @@ class NftController {
                             </button>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">${nft.title}</h4>
+                            <h4 class="card-title text-truncate">${nft.title}</h4>
                             <div class="item-price">
                                 <h5>List price: ${nft.price}</h5>
                                 <a id="nft${nft.id}" href="#" class="btn btn-primary" data-bs-toggle="modal"
@@ -188,7 +190,9 @@ class NftController {
             document
                 .getElementById(nftid)
                 .addEventListener("click", function () {
-                    nft.numlikes++;
+                    if (nft.numlikes < 1) {
+                        nft.numlikes++;
+                    }
                 });
         });
 
@@ -204,7 +208,7 @@ class NftController {
                 .addEventListener("click", (e) => {
                     e.preventDefault();
                     this.filterNftArray(category, e);
-                    console.log("clicked")
+                    console.log("clicked on category")
                 });
         });
 
@@ -233,7 +237,8 @@ class NftController {
 
         this.tempNfts = [];
         let executeFunc = true;
-        console.log("filtering NFT")
+        console.log("Filter NFT Array method triggered");
+        this.pageClicked = "page-1"; // reset to page 1 when category is clicked or search done
 
         // remove digits from css selector ID
         filterValue = filterValue.match(/[a-z]/gi).join("").toLowerCase();
@@ -267,9 +272,12 @@ class NftController {
             });
         }
 
-        this.pageFilter();
+        // condition to ensure pageFilter() method only runs once
+        if (!this.haveEventListener) {
+            this.pageFilter();
+        }
 
-        // check if css #id exists before calling displayNft method()
+        // check if css #id exists and category filter is not "all" before calling displayNft method()
         if (document.querySelector("#nftController") != null && executeFunc) {
             this.renderProductPageHTML(this.tempNfts);
         }
@@ -284,17 +292,51 @@ class NftController {
     // work in progess. to filter array based on clicked pagination button
     pageFilter() {
 
+        console.log("Page filter method triggered")
+        this.haveEventListener = true;
         // Add event listener for pagination
         let pageSize = 9;
-        let numPages = Math.floor(this.allNfts.length / pageSize) + 1;
-        console.log(numPages); // test
+        // let numPages = Math.floor(this.allNfts.length / pageSize) + 1;
+        let numPages = 4;
+        // console.log(numPages); // test
         let page = "page-"
+
+        document.getElementById("page-prev").addEventListener("click", () => {
+
+            let currentPage = parseInt(this.pageClicked[5]);
+            console.log(currentPage);
+
+            if (currentPage > 1) {
+                let prevPage = currentPage - 1;
+                this.pageClicked = page + prevPage.toString();
+            }
+
+            document.getElementById(this.pageClicked).click();
+
+        });
+
+        document.getElementById("page-next").addEventListener("click", () => {
+
+            let currentPage = parseInt(this.pageClicked[5]);
+            console.log(currentPage);
+
+            if (currentPage < 4) {
+                let nextPage = currentPage + 1;
+                this.pageClicked = page + nextPage.toString();
+            }
+
+            console.log(this.pageClicked);
+            document.getElementById(this.pageClicked).click();
+
+        });
 
         for (let i = 1; i <= numPages; i++) {
 
             let pageIndex = page + i;
 
-            document.getElementById(pageIndex).addEventListener("click", () => {
+            document.getElementById(pageIndex).addEventListener("click", (e) => {
+
+                this.pageClicked = e.target.id;
                 let newNftArray = [];
                 let counter = 1;
 
@@ -424,7 +466,7 @@ const displayNftDetail = function (nft) {
     document.querySelector("#nftLikes").innerHTML = `No. of likes: ${nft.numlikes}`;
     document.querySelector("#nftIdAssign").innerHTML = `
         <button id="nft${nft.id}a" class="btn btn-primary">
-        Like <i class="fa-solid fa-thumbs-up"></i>
+            Like <i class="fa-solid fa-thumbs-up"></i>
         </button>
     `;
     
@@ -433,7 +475,9 @@ const displayNftDetail = function (nft) {
     document
         .getElementById(nftid2)
         .addEventListener("click", () => {
-            nft.numlikes++;
+            if (nft.numlikes < 1) {
+                nft.numlikes++;
+            }
             document.querySelector("#nftLikes").innerHTML = `No. of likes: ${nft.numlikes}`;
         });
 };
