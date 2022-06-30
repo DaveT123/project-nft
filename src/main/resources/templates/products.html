@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     
     <!-- Required meta tags -->
@@ -359,11 +359,12 @@
 
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="page-prev">Previous</a></li>
         <li class="page-item"><a class="page-link" href="#" id="page-1">1</a></li>
         <li class="page-item"><a class="page-link" href="#" id="page-2">2</a></li>
         <li class="page-item"><a class="page-link" href="#" id="page-3">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="page-4">4</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="page-next">Next</a></li>
       </ul>
     </nav>
           
@@ -420,7 +421,14 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Buy now</button>
+            <div sec:authorize="isAnonymous()">
+              <a th:href="@{loginPage}">
+                <button type="button" class="btn btn-primary">Buy now</button>
+              </a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+              <button type="button" class="btn btn-secondary">Buy now</button>
+            </div>
             <div id="nftIdAssign">
               <!-- <button class="btn btn-primary">
               Like <i class="fa-solid fa-thumbs-up"></i>
