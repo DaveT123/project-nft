@@ -162,7 +162,7 @@ class NftController {
                         <div class="card-body">
                             <h4 class="card-title text-truncate">${nft.title}</h4>
                             <div class="item-price">
-                                <h5>List price: ${nft.price}</h5>
+                                <h5>List price: ${nft.price} ETH</h5>
                                 <a id="nft${nft.id}" href="#" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">Buy now</a>
                             </div>
@@ -460,7 +460,7 @@ const displayNftDetail = function (nft) {
     document.querySelector("#nftTitle").innerHTML = nft.title;
     document.querySelector("#nftImage").src = nft.imageUrl;
     document.querySelector("#nftDescription").innerHTML = nft.description;
-    document.querySelector("#nftPrice").innerHTML = `Price: ${nft.price}`;
+    document.querySelector("#nftPrice").innerHTML = `Price: ${nft.price} ETH`;
     // document.querySelector("#nftHashtag").innerHTML = nft.hashtag;
     // document.querySelector("#nftViews").innerHTML = nft.view;
     document.querySelector("#nftLikes").innerHTML = `No. of likes: ${nft.numlikes}`;
