@@ -51,6 +51,10 @@
     display: none;
 }
 
+#logOut2 {
+    cursor: pointer;
+}
+
 /* Footer Section */
 .footer-section {
     background-color: #94daff;

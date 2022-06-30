@@ -88,7 +88,7 @@ Include the sec namespace in the HTML tag.
                         <!--Show logout button if logged in-->
                         <div sec:authorize="isAuthenticated()">
                             <form id="logOut2" th:action="@{/logout}" method="post">
-                                <a th:href="@{loginPage}" class="nav-link button btn-primary rounded text-center text-white d-block d-lg-none">Log Out</a>
+                                <a class="nav-link button btn-primary rounded text-center text-white d-block d-lg-none" onclick="document.getElementById('logOut2').submit();">Log Out</a>
                             </form>
                         </div>
 
