@@ -76,8 +76,8 @@ class NftController {
             .then((resp) => resp.json())
             .then(function(data) {
 
-                console.log("2. receive data")
-                console.log(data);
+                // console.log("2. receive data")
+                // console.log(data);
 
                 data.forEach((nft, index) => {
 
@@ -129,7 +129,7 @@ class NftController {
         if (this.counter == 0) {
             this.tempNfts = this.allNfts;
             this.counter++;
-            console.log(this.counter);
+            // console.log(this.counter);
 
             // to filter 9 items for initial nft page display
             let count = 1;
@@ -208,7 +208,7 @@ class NftController {
                 .addEventListener("click", (e) => {
                     e.preventDefault();
                     this.filterNftArray(category, e);
-                    console.log("clicked on category")
+                    // console.log("clicked on category")
                 });
         });
 
@@ -217,7 +217,7 @@ class NftController {
             if (e.key == "Enter") {
                 let searchInput = e.target.value;
                 this.filterNftArray(searchInput, e);
-                console.log("searched #1")
+                // console.log("searched #1")
             }
         });
 
@@ -226,7 +226,7 @@ class NftController {
             if (e.key == "Enter") {
                 let searchInput = e.target.value;
                 this.filterNftArray(searchInput, e);
-                console.log("searched #2")
+                // console.log("searched #2")
             }
         });
 
@@ -237,7 +237,7 @@ class NftController {
 
         this.tempNfts = [];
         let executeFunc = true;
-        console.log("Filter NFT Array method triggered");
+        // console.log("Filter NFT Array method triggered");
         this.pageClicked = "page-1"; // reset to page 1 when category is clicked or search done
 
         // remove digits from css selector ID
@@ -292,7 +292,7 @@ class NftController {
     // work in progess. to filter array based on clicked pagination button
     pageFilter() {
 
-        console.log("Page filter method triggered")
+        // console.log("Page filter method triggered")
         this.haveEventListener = true;
         // Add event listener for pagination
         let pageSize = 9;
@@ -304,7 +304,7 @@ class NftController {
         document.getElementById("page-prev").addEventListener("click", () => {
 
             let currentPage = parseInt(this.pageClicked[5]);
-            console.log(currentPage);
+            // console.log(currentPage);
 
             if (currentPage > 1) {
                 let prevPage = currentPage - 1;
@@ -318,14 +318,14 @@ class NftController {
         document.getElementById("page-next").addEventListener("click", () => {
 
             let currentPage = parseInt(this.pageClicked[5]);
-            console.log(currentPage);
+            // console.log(currentPage);
 
             if (currentPage < 4) {
                 let nextPage = currentPage + 1;
                 this.pageClicked = page + nextPage.toString();
             }
 
-            console.log(this.pageClicked);
+            // console.log(this.pageClicked);
             document.getElementById(this.pageClicked).click();
 
         });
@@ -340,10 +340,10 @@ class NftController {
                 let newNftArray = [];
                 let counter = 1;
 
-                console.log(this.tempNfts); // test
+                // console.log(this.tempNfts); // test
 
                 if (this.tempNfts.length <= (i-1) * 9) {
-                    console.log("Array is empty")
+                    // console.log("Array is empty")
                     newNftArray = [];
                 }
                 else {
@@ -355,7 +355,7 @@ class NftController {
                     });
                 }
 
-                console.log(newNftArray); // test
+                // console.log(newNftArray); // test
                 this.pageNfts = newNftArray;
                 this.renderProductPageHTML(this.pageNfts);
 
@@ -368,7 +368,7 @@ class NftController {
     //method to display array of NFT objects to home page
     renderCarouselPage() {
 
-        console.log(this.allNfts);
+        // console.log(this.allNfts);
 
         let count = 0;
         let nftInfo = "";
@@ -408,7 +408,7 @@ class NftController {
             // if statement to determine whether to add NFT to carousel
             if (count < 9 && status) {
                 
-                console.log(count); //nft0, nft1, nft2....
+                // console.log(count); //nft0, nft1, nft2....
 
                 // add outer layer starting div
                 if (count == 0) {
