@@ -27,7 +27,7 @@ class NftController {
 
         // Configuration of dev and prod URL - usually will fetch a json file from the API in the environment
         this.domainURL_Dev = "http://localhost:8080/";
-        this.domainURL_Prod ="http://mgahytidrl.us16.qoddiapp.com/";
+        this.domainURL_Prod ="http://mkbjrhwqvo.us17.qoddiapp.com/";
 
         this.addItemAPI = this.domainURL_Prod + "nft/add";
         this.allItemAPI = this.domainURL_Prod + "nft/all";
