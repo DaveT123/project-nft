@@ -26,7 +26,7 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/DaveT123/project-nft"><strong>Explore the docs »</strong></a>
+    <a href="#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
@@ -64,6 +64,7 @@
 The NFT Marketplace website is built as a capstone project for a 3 months bootcamp. As Heroku is no longer provides free service, 
 the website has been re-deployed using Qoddi. In summary, the website comprises of 4 main pages as described below.
 
+<br />
 Link: 
 
 * http://mkbjrhwqvo.us17.qoddiapp.com/
@@ -121,7 +122,7 @@ To get a local copy up and running follow these simple example steps.
    ./gradlew bootRun
    ```
 
-<br/>   
+<br />   
 Important Note: You will require a live database connection for the application to build successfully. Otherwise, it will fail.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
