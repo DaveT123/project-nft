@@ -90,7 +90,7 @@ The major languages and frameworks/libraries that are used to build this project
     <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="Bootstrap-logo" width="25" height="25"> Bootstrap
   </a>
 * <a href="https://spring.io/">
-    <img src="https://spring.io/images/projects/spring-edf462fec682b9d48cf628eaf9e19521.svg" alt="Springboot-logo" width="25" height="25"> Spring Boot
+    <img src="https://spring.io/img/logos/spring-initializr.svg" alt="Springboot-logo" width="25" height="25"> Spring Boot
   </a>
 * <a href="https://www.mysql.com/">
     <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="Mysql-logo" width="25" height="25"> MySQL
