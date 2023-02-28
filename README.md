@@ -61,7 +61,7 @@
 
 ### Introduction
 
-The NFT Marketplace website is built as a capstone project for a 3 months bootcamp. As Heroku is no longer provides free service, 
+The NFT Marketplace website is built as a capstone project for a 3 months bootcamp. As Heroku no longer provides free service, 
 the website has been re-deployed using Qoddi. In summary, the website comprises of 4 main pages as described below.
 
 <br />
